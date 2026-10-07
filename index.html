@@ -1,508 +1,545 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Anna Gull | Flowers & Gifts</title>
+<title>Anna Gull | Flower Shop</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background: #fff8fb;
+    color: #333;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            color: #ffffff;
-            background: #120d10;
-        }
+/* HERO */
+.hero {
+    min-height: 75vh;
+    background:
+        linear-gradient(rgba(60,20,40,0.48), rgba(60,20,40,0.48)),
+        url("luxury/IMG_7735.jpeg") center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px 20px;
+}
 
-        /* ===== HERO / BACKGROUND ===== */
+.hero-content {
+    color: white;
+    max-width: 700px;
+}
 
-        .hero {
-            min-height: 100vh;
-            background:
-                linear-gradient(rgba(20, 10, 15, 0.55), rgba(20, 10, 15, 0.75)),
-                url("IMG_7735.jpeg");
+.hero h1 {
+    font-size: 55px;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
 
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 30px 20px;
-        }
+.hero p {
+    font-size: 20px;
+    margin-bottom: 25px;
+}
 
-        .hero-content {
-            max-width: 800px;
-        }
+.shop-button {
+    display: inline-block;
+    background: white;
+    color: #9b4168;
+    padding: 14px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+}
 
-        .logo {
-            font-size: 55px;
-            font-family: Georgia, serif;
-            letter-spacing: 3px;
-            margin-bottom: 10px;
-        }
+/* INFO */
+.info {
+    text-align: center;
+    padding: 25px 15px;
+    background: white;
+}
 
-        .subtitle {
-            font-size: 20px;
-            letter-spacing: 3px;
-            margin-bottom: 25px;
-        }
+.info p {
+    margin: 7px 0;
+}
 
-        .hero-text {
-            font-size: 18px;
-            line-height: 1.7;
-            margin-bottom: 30px;
-        }
+/* CATEGORIES */
+.categories {
+    padding: 45px 20px;
+    text-align: center;
+}
 
-        /* ===== BUTTONS ===== */
+.categories h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+}
 
-        .buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
+.category-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
 
-        .btn {
-            display: inline-block;
-            padding: 14px 25px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+.category-btn {
+    border: none;
+    padding: 18px 35px;
+    border-radius: 35px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    background: #9b4168;
+    color: white;
+    transition: 0.3s;
+}
 
-        .btn-main {
-            background: #ffffff;
-            color: #222222;
-        }
+.category-btn:hover {
+    transform: translateY(-3px);
+}
 
-        .btn-main:hover {
-            transform: translateY(-3px);
-        }
+/* BOUQUETS */
+.category-section {
+    display: none;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
 
-        .btn-outline {
-            border: 2px solid #ffffff;
-            color: #ffffff;
-        }
+.category-section.active {
+    display: block;
+}
 
-        .btn-outline:hover {
-            background: #ffffff;
-            color: #222222;
-        }
+.category-title {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 30px;
+    color: #9b4168;
+}
 
-        /* ===== SECTIONS ===== */
+.bouquet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+}
 
-        section {
-            padding: 70px 20px;
-        }
+.bouquet {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.10);
+    text-align: center;
+    padding-bottom: 20px;
+}
 
-        .section-title {
-            text-align: center;
-            font-size: 35px;
-            font-family: Georgia, serif;
-            margin-bottom: 12px;
-        }
+.bouquet img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
 
-        .section-description {
-            text-align: center;
-            color: #d8d8d8;
-            margin-bottom: 40px;
-        }
+.bouquet h3 {
+    margin: 15px 10px 8px;
+    font-size: 19px;
+}
 
-        /* ===== BOUQUETS ===== */
+.price {
+    color: #9b4168;
+    font-size: 21px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
 
-        .bouquets {
-            background: #1b1116;
-        }
+.order-btn {
+    display: inline-block;
+    background: #25D366;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+}
 
-        .cards {
-            max-width: 1100px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
+/* FOOTER */
+footer {
+    margin-top: 50px;
+    background: #351b29;
+    color: white;
+    text-align: center;
+    padding: 35px 20px;
+}
 
-        .card {
-            background: #261820;
-            border-radius: 20px;
-            overflow: hidden;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            transition: 0.3s;
-        }
+footer a {
+    color: white;
+    text-decoration: none;
+    margin: 8px;
+    display: inline-block;
+}
 
-        .card:hover {
-            transform: translateY(-7px);
-        }
+.footer-title {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
 
-        .card img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            display: block;
-        }
+/* MOBILE */
+@media (max-width: 600px) {
 
-        .card-content {
-            padding: 25px;
-        }
+    .hero {
+        min-height: 65vh;
+    }
 
-        .card h3 {
-            font-family: Georgia, serif;
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
+    .hero h1 {
+        font-size: 40px;
+    }
 
-        .price {
-            font-size: 22px;
-            font-weight: bold;
-            margin: 15px 0;
-        }
+    .hero p {
+        font-size: 17px;
+    }
 
-        /* ===== ABOUT ===== */
+    .category-btn {
+        width: 90%;
+    }
 
-        .about {
-            background: #120d10;
-        }
-
-        .about-box {
-            max-width: 850px;
-            margin: auto;
-            text-align: center;
-            line-height: 1.8;
-            color: #e8e8e8;
-            font-size: 17px;
-        }
-
-        /* ===== CONTACT ===== */
-
-        .contact {
-            background:
-                linear-gradient(rgba(20,10,15,0.88), rgba(20,10,15,0.92)),
-                url("IMG_7778.jpeg");
-
-            background-size: cover;
-            background-position: center;
-            text-align: center;
-        }
-
-        .contact-box {
-            max-width: 700px;
-            margin: auto;
-        }
-
-        .contact-item {
-            margin: 18px 0;
-            font-size: 18px;
-        }
-
-        .contact-item a {
-            color: #ffffff;
-            text-decoration: none;
-        }
-
-        /* ===== FOOTER ===== */
-
-        footer {
-            background: #090609;
-            text-align: center;
-            padding: 30px 20px;
-            color: #bbbbbb;
-        }
-
-        footer strong {
-            color: #ffffff;
-        }
-
-        /* ===== MOBILE ===== */
-
-        @media (max-width: 800px) {
-
-            .cards {
-                grid-template-columns: 1fr;
-                max-width: 450px;
-            }
-
-            .logo {
-                font-size: 42px;
-            }
-
-            .subtitle {
-                font-size: 16px;
-            }
-
-            .hero-text {
-                font-size: 16px;
-            }
-
-            .section-title {
-                font-size: 30px;
-            }
-
-            .card img {
-                height: 320px;
-            }
-        }
-    </style>
+    .bouquet img {
+        height: 330px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <!-- ===== HERO ===== -->
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Anna Gull</h1>
+        <p>Beautiful Flowers • Beautiful Moments</p>
+        <a href="#categories" class="shop-button">
+            Shop Now
+        </a>
+    </div>
+</section>
 
-    <header class="hero">
+<!-- SHOP INFORMATION -->
+<section class="info">
+    <p>🌸 Fresh flowers & beautiful bouquets</p>
+    <p>🚚 Delivery Available</p>
+    <p>🕙 Open every day: 10:00 AM – 11:30 PM</p>
+</section>
 
-        <div class="hero-content">
+<!-- CATEGORY MENU -->
+<section class="categories" id="categories">
 
-            <div class="logo">
-                Anna Gull
-            </div>
+    <h2>Choose Your Bouquet</h2>
 
-            <div class="subtitle">
-                FLOWERS • GIFTS • LOVE
-            </div>
+    <div class="category-buttons">
 
-            <p class="hero-text">
-                Beautiful flowers and elegant gifts for every special moment.
-                Make someone smile with Anna Gull.
-            </p>
+        <button class="category-btn"
+        onclick="showCategory('small')">
+            🌸 Small
+        </button>
 
-            <div class="buttons">
+        <button class="category-btn"
+        onclick="showCategory('medium')">
+            🌷 Medium
+        </button>
 
-                <a class="btn btn-main" href="#bouquets">
-                    Shop Now
-                </a>
+        <button class="category-btn"
+        onclick="showCategory('luxury')">
+            👑 Luxury
+        </button>
 
-                <a class="btn btn-outline"
-                   href="https://www.instagram.com/anna_gull25/"
-                   target="_blank">
-                    Instagram
-                </a>
+    </div>
 
-            </div>
+</section>
 
+
+<!-- SMALL -->
+<section id="small" class="category-section">
+
+    <h2 class="category-title">🌸 Small Bouquets</h2>
+
+    <div class="bouquet-grid">
+
+        <div class="bouquet">
+            <img src="small/IMG_7773.jpeg">
+            <h3>Small Bouquet 1</h3>
+            <div class="price">20,000 IQD</div>
+            <a class="order-btn"
+            href="https://wa.me/9647730340354?text=Hello%20Anna%20Gull,%20I%20want%20Small%20Bouquet%201%20for%2020,000%20IQD">
+            Order on WhatsApp
+            </a>
         </div>
 
-    </header>
-
-
-    <!-- ===== BOUQUETS ===== -->
-
-    <section class="bouquets" id="bouquets">
-
-        <h2 class="section-title">
-            Our Bouquets
-        </h2>
-
-        <p class="section-description">
-            Choose the bouquet that fits your special moment.
-        </p>
-
-
-        <div class="cards">
-
-            <!-- SMALL -->
-
-            <div class="card">
-
-                <img src="IMG_7791.jpeg"
-                     alt="Anna Gull Small Bouquet">
-
-                <div class="card-content">
-
-                    <h3>
-                        Small Bouquet
-                    </h3>
-
-                    <p>
-                        A beautiful choice for a simple and lovely surprise.
-                    </p>
-
-                    <div class="price">
-                        25,000 IQD
-                    </div>
-
-                    <a class="btn btn-main"
-                       href="tel:07730340354">
-                        Order Now
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- MEDIUM -->
-
-            <div class="card">
-
-                <img src="IMG_7778.jpeg"
-                     alt="Anna Gull Medium Bouquet">
-
-                <div class="card-content">
-
-                    <h3>
-                        Medium Bouquet
-                    </h3>
-
-                    <p>
-                        A perfect gift for birthdays, celebrations and special days.
-                    </p>
-
-                    <div class="price">
-                        30,000 IQD
-                    </div>
-
-                    <a class="btn btn-main"
-                       href="tel:07730340354">
-                        Order Now
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- LARGE -->
-
-            <div class="card">
-
-                <img src="IMG_7735.jpeg"
-                     alt="Anna Gull Luxury Bouquet">
-
-                <div class="card-content">
-
-                    <h3>
-                        Luxury Bouquet
-                    </h3>
-
-                    <p>
-                        An elegant bouquet made for unforgettable moments.
-                    </p>
-
-                    <div class="price">
-                        70,000 IQD
-                    </div>
-
-                    <a class="btn btn-main"
-                       href="tel:07730340354">
-                        Order Now
-                    </a>
-
-                </div>
-
-            </div>
-
+        <div class="bouquet">
+            <img src="small/IMG_7460.jpeg">
+            <h3>Small Bouquet 2</h3>
+            <div class="price">25,000 IQD</div>
+            <a class="order-btn"
+            href="https://wa.me/9647730340354?text=Hello%20Anna%20Gull,%20I%20want%20Small%20Bouquet%202%20for%2025,000%20IQD">
+            Order on WhatsApp
+            </a>
         </div>
 
-    </section>
-
-
-    <!-- ===== ABOUT ===== -->
-
-    <section class="about">
-
-        <h2 class="section-title">
-            Why Anna Gull?
-        </h2>
-
-        <div class="about-box">
-
-            <p>
-                At Anna Gull, we create beautiful flower arrangements
-                and gifts designed to make your special moments memorable.
-            </p>
-
-            <br>
-
-            <p>
-                Whether it is a birthday, anniversary, celebration,
-                congratulations or simply a surprise for someone you love,
-                we are here to help you choose something beautiful.
-            </p>
-
+        <div class="bouquet">
+            <img src="small/IMG_7456.jpeg">
+            <h3>Small Bouquet 3</h3>
+            <div class="price">25,000 IQD</div>
+            <a class="order-btn"
+            href="https://wa.me/9647730340354?text=Hello%20Anna%20Gull,%20I%20want%20Small%20Bouquet%203%20for%2025,000%20IQD">
+            Order on WhatsApp
+            </a>
         </div>
 
-    </section>
-
-
-    <!-- ===== CONTACT ===== -->
-
-    <section class="contact">
-
-        <div class="contact-box">
-
-            <h2 class="section-title">
-                Order From Anna Gull
-            </h2>
-
-            <p class="section-description">
-                Contact us for bouquets, gifts and delivery.
-            </p>
-
-
-            <div class="contact-item">
-                📞
-                <a href="tel:07730340354">
-                    07730340354
-                </a>
-            </div>
-
-
-            <div class="contact-item">
-                🚚 Delivery Available
-            </div>
-
-
-            <div class="contact-item">
-                🕙 Open: 10:00 AM – 11:30 PM
-            </div>
-
-
-            <div class="buttons">
-
-                <a class="btn btn-main"
-                   href="https://www.instagram.com/anna_gull25/"
-                   target="_blank">
-                    Follow Instagram
-                </a>
-
-                <a class="btn btn-outline"
-                   href="https://maps.app.goo.gl/zV3wYWzEKr8E34ps5"
-                   target="_blank">
-                    Find Us
-                </a>
-
-            </div>
-
+        <div class="bouquet">
+            <img src="small/IMG_7424.jpeg">
+            <h3>Small Bouquet 4</h3>
+            <div class="price">20,000 IQD</div>
+            <a class="order-btn"
+            href="https://wa.me/9647730340354?text=Hello%20Anna%20Gull,%20I%20want%20Small%20Bouquet%204%20for%2020,000%20IQD">
+            Order on WhatsApp
+            </a>
         </div>
 
-    </section>
+        <div class="bouquet">
+            <img src="small/IMG_7396.jpeg">
+            <h3>Small Bouquet 5</h3>
+            <div class="price">15,000 IQD</div>
+            <a class="order-btn"
+            href="https://wa.me/9647730340354?text=Hello%20Anna%20Gull,%20I%20want%20Small%20Bouquet%205%20for%2015,000%20IQD">
+            Order on WhatsApp
+            </a>
+        </div>
+
+        <div class="bouquet">
+            <img src="small/E1F2928F-DF57-4084-9AFF-4D9D986D7C30.png">
+            <h3>Small Bouquet 6</h3>
+            <div class="price">25,000 IQD</div>
+            <a class="order-btn"
+            href="https://wa.me/9647730340354?text=Hello%20Anna%20Gull,%20I%20want%20Small%20Bouquet%206%20for%2025,000%20IQD">
+            Order on WhatsApp
+            </a>
+        </div>
+
+    </div>
+</section>
 
 
-    <!-- ===== FOOTER ===== -->
+<!-- MEDIUM -->
+<section id="medium" class="category-section">
 
-    <footer>
+    <h2 class="category-title">🌷 Medium Bouquets</h2>
 
-        <p>
-            © 2026 <strong>Anna Gull</strong>
-        </p>
+    <div class="bouquet-grid">
 
-        <p>
-            Flowers • Gifts • Love
-        </p>
+        <div class="bouquet">
+            <img src="medium/IMG_7778.jpeg">
+            <h3>Medium Bouquet 1</h3>
+            <div class="price">35,000 IQD</div>
+            <a class="order-btn"
+            href="https://wa.me/9647730340354?text=Hello%20Anna%20Gull,%20I%20want%20Medium%20Bouquet%201%20for%2035,000%20IQD">
+            Order on WhatsApp
+            </a>
+        </div>
 
-    </footer>
+        <div class="bouquet">
+            <img src="medium/IMG_7770.jpeg">
+            <h3>Medium Bouquet 2</h3>
+            <div class="price">40,000 IQD</div>
+            <a class="order-btn"
+            href="https://wa.me/9647730340354?text=Hello%20Anna%20Gull,%20I%20want%20Medium%20Bouquet%202%20for%2040,000%20IQD">
+            Order on WhatsApp
+            </a>
+        </div>
+
+        <div class="bouquet">
+            <img src="medium/IMG_7705.jpeg">
+            <h3>Medium Bouquet 3</h3>
+            <div class="price">45,000 IQD</div>
+            <a class="order-btn"
+            href="https://wa.me/9647730340354?text=Hello%20Anna%20Gull,%20I%20want%20Medium%20Bouquet%203%20for%2045,000%20IQD">
+            Order on WhatsApp
+            </a>
+        </div>
+
+        <div class="bouquet">
+            <img src="medium/F6B0452A-9DFD-4583-915B-DE205907B3CC.jpeg">
+            <h3>Medium Bouquet 4</h3>
+            <div class="price">50,000 IQD</div>
+            <a class="order-btn"
+            href="https://wa.me/9647730340354?text=Hello%20Anna%20Gull,%20I%20want%20Medium%20Bouquet%204%20for%2050,000%20IQD">
+            Order on WhatsApp
+            </a>
+        </div>
+
+        <div class="bouquet">
+            <img src="medium/E67472B8-59ED-4D78-B53A-564E7D8BBC8A.jpeg">
+            <h3>Medium Bouquet 5</h3>
+            <div class="price">50,000 IQD</div>
+            <a class="order-btn"
+            href="https://wa.me/9647730340354?text=Hello%20Anna%20Gull,%20I%20want%20Medium%20Bouquet%205%20for%2050,000%20IQD">
+            Order on WhatsApp
+            </a>
+        </div>
+
+        <div class="bouquet">
+            <img src="medium/B1A2E966-AB01-49B5-854A-F5603B8C5458.jpeg">
+            <h3>Medium Bouquet 6</h3>
+            <div class="price">60,000 IQD</div>
+            <a class="order-btn"
+            href="https://wa.me/9647730340354?text=Hello%20Anna%20Gull,%20I%20want%20Medium%20Bouquet%206%20for%2060,000%20IQD">
+            Order on WhatsApp
+            </a>
+        </div>
+
+        <div class="bouquet">
+            <img src="medium/6BF0EF33-9939-420C-8734-5DC51C46D2CF.jpeg">
+            <h3>Medium Bouquet 7</h3>
+            <div class="price">50,000 IQD</div>
+            <a class="order-btn"
+            href="https://wa.me/9647730340354?text=Hello%20Anna%20Gull,%20I%20want%20Medium%20Bouquet%207%20for%2050,000%20IQD">
+            Order on WhatsApp
+            </a>
+        </div>
+
+        <div class="bouquet">
+            <img src="medium/1EE84DC2-6CBC-420F-80A9-C311DB0E7AE2.jpeg">
+            <h3>Medium Bouquet 8</h3>
+            <div class="price">45,000 IQD</div>
+            <a class="order-btn"
+            href="https://wa.me/9647730340354?text=Hello%20Anna%20Gull,%20I%20want%20Medium%20Bouquet%208%20for%2045,000%20IQD">
+            Order on WhatsApp
+            </a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- LUXURY -->
+<section id="luxury" class="category-section">
+
+    <h2 class="category-title">👑 Luxury Bouquets</h2>
+
+    <div class="bouquet-grid">
+
+        <div class="bouquet">
+            <img src="luxury/IMG_7735.jpeg">
+            <h3>Luxury Bouquet 1</h3>
+            <div class="price">70,000 IQD</div>
+            <a class="order-btn"
+            href="https://wa.me/9647730340354?text=Hello%20Anna%20Gull,%20I%20want%20Luxury%20Bouquet%201%20for%2070,000%20IQD">
+            Order on WhatsApp
+            </a>
+        </div>
+
+        <div class="bouquet">
+            <img src="luxury/IMG_7666.jpeg">
+            <h3>Luxury Bouquet 2</h3>
+            <div class="price">85,000 IQD</div>
+            <a class="order-btn"
+            href="https://wa.me/9647730340354?text=Hello%20Anna%20Gull,%20I%20want%20Luxury%20Bouquet%202%20for%2085,000%20IQD">
+            Order on WhatsApp
+            </a>
+        </div>
+
+        <div class="bouquet">
+            <img src="luxury/IMG_2958.jpeg">
+            <h3>Luxury Bouquet 3</h3>
+            <div class="price">85,000 IQD</div>
+            <a class="order-btn"
+            href="https://wa.me/9647730340354?text=Hello%20Anna%20Gull,%20I%20want%20Luxury%20Bouquet%203%20for%2085,000%20IQD">
+            Order on WhatsApp
+            </a>
+        </div>
+
+        <div class="bouquet">
+            <img src="luxury/IMG_2175.jpeg">
+            <h3>Luxury Bouquet 4</h3>
+            <div class="price">85,000 IQD</div>
+            <a class="order-btn"
+            href="https://wa.me/9647730340354?text=Hello%20Anna%20Gull,%20I%20want%20Luxury%20Bouquet%204%20for%2085,000%20IQD">
+            Order on WhatsApp
+            </a>
+        </div>
+
+        <div class="bouquet">
+            <img src="luxury/667403C2-9319-4729-ADDF-53BA31ABD21A.png">
+            <h3>Luxury Bouquet 5</h3>
+            <div class="price">70,000 IQD</div>
+            <a class="order-btn"
+            href="https://wa.me/9647730340354?text=Hello%20Anna%20Gull,%20I%20want%20Luxury%20Bouquet%205%20for%2070,000%20IQD">
+            Order on WhatsApp
+            </a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="footer-title">Anna Gull 🌸</div>
+
+    <p>Beautiful flowers for beautiful moments.</p>
+
+    <p>🚚 Delivery Available</p>
+
+    <p>🕙 10:00 AM – 11:30 PM</p>
+
+    <div>
+
+        <a href="https://wa.me/9647730340354">
+            WhatsApp
+        </a>
+
+        <a href="tel:07730340354">
+            Call
+        </a>
+
+        <a href="https://www.instagram.com/anna_gull25/">
+            Instagram
+        </a>
+
+        <a href="https://maps.app.goo.gl/zV3wYWzEKr8E34ps5">
+            Google Maps
+        </a>
+
+    </div>
+
+    <p style="margin-top:20px;">
+        © 2026 Anna Gull
+    </p>
+
+</footer>
+
+
+<script>
+
+function showCategory(category) {
+
+    document.querySelectorAll('.category-section')
+        .forEach(function(section) {
+            section.classList.remove('active');
+        });
+
+    document.getElementById(category)
+        .classList.add('active');
+
+    document.getElementById(category)
+        .scrollIntoView({
+            behavior: 'smooth'
+        });
+}
+
+</script>
 
 </body>
 </html>
