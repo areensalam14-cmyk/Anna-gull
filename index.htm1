@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anna Gull | Flower Shop</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff8fb;
+      color: #333;
+      text-align: center;
+    }
+
+    header {
+      background: #f7d9e5;
+      padding: 35px 20px;
+    }
+
+    header h1 {
+      font-size: 42px;
+      color: #8b3155;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 18px;
+    }
+
+    .hero {
+      padding: 40px 20px;
+    }
+
+    .hero h2 {
+      font-size: 30px;
+      color: #8b3155;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+
+    .products {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      width: 280px;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    .flower {
+      font-size: 65px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      color: #8b3155;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    .buttons {
+      margin: 30px 20px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 14px 25px;
+      margin: 8px;
+      border-radius: 30px;
+      text-decoration: none;
+      color: white;
+      background: #8b3155;
+      font-weight: bold;
+    }
+
+    .delivery {
+      background: #f7d9e5;
+      padding: 25px;
+      margin-top: 30px;
+    }
+
+    footer {
+      padding: 25px;
+      background: #8b3155;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>🌹 Anna Gull</h1>
+    <p>Flower Shop • Kalar</p>
+  </header>
+
+  <section class="hero">
+    <h2>Beautiful Flowers for Every Occasion 💐</h2>
+    <p>Fresh flowers and beautiful bouquets made with love.</p>
+  </section>
+
+  <section class="products">
+
+    <div class="card">
+      <div class="flower">🌹</div>
+      <h3>Rose Bouquet</h3>
+      <p>Beautiful fresh roses</p>
+      <div class="price">25,000 IQD</div>
+    </div>
+
+    <div class="card">
+      <div class="flower">💐</div>
+      <h3>Flower Bouquet</h3>
+      <p>Beautiful mixed flowers</p>
+      <div class="price">30,000 IQD</div>
+    </div>
+
+    <div class="card">
+      <div class="flower">🌸</div>
+      <h3>Premium Bouquet</h3>
+      <p>Special bouquet for special moments</p>
+      <div class="price">70,000 IQD</div>
+    </div>
+
+  </section>
+
+  <section class="delivery">
+    <h2>🚚 Delivery Available</h2>
+    <p>We deliver flowers to your location.</p>
+  </section>
+
+  <div class="buttons">
+
+    <a class="button" href="tel:07730340354">
+      📞 Call Us
+    </a>
+
+    <a class="button"
+       href="https://www.instagram.com/anna_gull25/"
+       target="_blank">
+      📷 Instagram
+    </a>
+
+    <a class="button"
+       href="https://maps.app.goo.gl/zV3wYWzEKr8E34ps5"
+       target="_blank">
+      📍 Find Us
+    </a>
+
+  </div>
+
+  <footer>
+    <p>© 2026 Anna Gull Flower Shop</p>
+    <p>🌹 Made with love in Kalar 🌹</p>
+  </footer>
+
+</body>
+</html>
