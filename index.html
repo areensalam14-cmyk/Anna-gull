@@ -541,5 +541,118 @@ function showCategory(category) {
 
 </script>
 
+<script>
+const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTm8IizO2pYL9AxQTK-5n_7aEFKdgBvTsxItaxnoGEGi87DlCO-GpEAoABJ_C6peFcpVsGO0k49ymuz/pub?output=csv";
+
+function parseCSV(text) {
+    const rows = [];
+    let row = [], cell = "", quoted = false;
+
+    for (let i = 0; i < text.length; i++) {
+        const c = text[i];
+
+        if (c === '"' && quoted && text[i + 1] === '"') {
+            cell += '"';
+            i++;
+        } else if (c === '"') {
+            quoted = !quoted;
+        } else if (c === "," && !quoted) {
+            row.push(cell.trim());
+            cell = "";
+        } else if ((c === "\n" || c === "\r") && !quoted) {
+            if (c === "\r" && text[i + 1] === "\n") i++;
+            row.push(cell.trim());
+            if (row.some(v => v !== "")) rows.push(row);
+            row = [];
+            cell = "";
+        } else {
+            cell += c;
+        }
+    }
+
+    row.push(cell.trim());
+    if (row.some(v => v !== "")) rows.push(row);
+    return rows;
+}
+
+function safeText(value) {
+    return String(value || "").replace(/[&<>"']/g, c => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;",
+        '"': "&quot;", "'": "&#39;"
+    })[c]);
+}
+
+fetch(sheetURL)
+    .then(response => {
+        if (!response.ok) throw new Error("Sheet unavailable");
+        return response.text();
+    })
+    .then(text => {
+        const rows = parseCSV(text);
+        const headers = rows.shift().map(h => h.toLowerCase());
+        const col = name => headers.indexOf(name.toLowerCase());
+
+        const nameCol = col("Bouquet Name");
+        const priceCol = col("Price (IQD)");
+        const photoCol = col("Photo");
+        const sizeCol = col("Size");
+        const descCol = col("Description");
+        const availableCol = col("Availability");
+
+        if ([nameCol, priceCol, photoCol, sizeCol].some(i => i < 0)) {
+            throw new Error("Check sheet column names");
+        }
+
+        ["small", "medium", "luxury"].forEach(size => {
+            const section = document.getElementById(size);
+            if (section) section.querySelector(".bouquet-grid").innerHTML = "";
+        });
+
+        rows.forEach(row => {
+            const name = row[nameCol];
+            const price = row[priceCol];
+            const photo = row[photoCol];
+            const size = row[sizeCol].toLowerCase().trim();
+
+            if (!name || !price || !photo) return;
+            if (!["small", "medium", "luxury"].includes(size)) return;
+
+            if (availableCol >= 0 &&
+                row[availableCol].toLowerCase().trim() !== "available") return;
+
+            const section = document.getElementById(size);
+            if (!section) return;
+
+            const imagePath = photo.includes("/")
+                ? photo
+                : size + "/" + photo;
+
+            const description = descCol >= 0 ? row[descCol] : "";
+            const message = encodeURIComponent(
+                "Hello Anna Gull, I want " + name + " for " + price + " IQD"
+            );
+
+            const card = document.createElement("div");
+            card.className = "bouquet";
+            card.innerHTML = `
+                <img src="${safeText(imagePath)}"
+                     alt="${safeText(name)}" loading="lazy">
+                <h3>${safeText(name)}</h3>
+                <div class="price">${safeText(
+                    Number(price.replace(/,/g, "")).toLocaleString("en-US")
+                )} IQD</div>
+                <p style="padding:0 12px 15px">${safeText(description)}</p>
+                <a class="order-btn"
+                   href="https://wa.me/9647730340354?text=${message}">
+                   Order on WhatsApp
+                </a>`;
+            section.querySelector(".bouquet-grid").appendChild(card);
+        });
+    })
+    .catch(error => console.error("Anna Gull sheet error:", error));
+</script>
+</body>
+</html>
+
 </body>
 </html>
