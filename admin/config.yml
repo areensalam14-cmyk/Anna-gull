@@ -1,4 +1,3 @@
-
 backend:
   name: github
   repo: areensalam14-cmyk/anna-gull
@@ -29,3 +28,4 @@ collections:
         name: "description"
         widget: "text"
         required: false
+
